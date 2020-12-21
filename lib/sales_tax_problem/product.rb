@@ -11,14 +11,14 @@ class Product
   end
 
   def prix_ttc
-    @price + basic_tax + imported_tax
+    @price + basic_tax + import_tax
   end
 
   def basic_tax
     ((@type.tax_percentage * @price) * 20).round / 20.0
   end
 
-  def imported_tax
+  def import_tax
     ((@import_type.tax_percentage * @price) * 20).round / 20.0
   end
 end

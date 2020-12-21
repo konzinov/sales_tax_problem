@@ -12,7 +12,7 @@ class ImportType
     end
 
     def not_imported
-      @not_imported = new
+      @not_imported ||= new
     end
   end
 end

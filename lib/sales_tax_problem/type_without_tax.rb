@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TypeWithoutTax < Type
   class << self
     def book
@@ -9,7 +11,7 @@ class TypeWithoutTax < Type
     end
 
     def medical_product
-      @medical_product = new(name: 'medical_product', tax_percentage: 0.0)
+      @medical_product ||= new(name: 'medical_product', tax_percentage: 0.0)
     end
   end
 end

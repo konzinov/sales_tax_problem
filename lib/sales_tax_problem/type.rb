@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Type
   attr_reader :tax_percentage
 

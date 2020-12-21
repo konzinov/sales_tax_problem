@@ -12,11 +12,11 @@ class Command
   end
 
   def basic_taxes
-    @command_items.map(&:product).map(&:basic_tax).reduce(0.00, :+)
+    @command_items.map(&:basic_tax).reduce(0.00, :+)
   end
 
   def imported_taxes
-    @command_items.map(&:product).map(&:imported_tax).reduce(0.00, :+)
+    @command_items.map(&:import_tax).reduce(0.00, :+)
   end
 
   def total_ttc
