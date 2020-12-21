@@ -1,19 +1,30 @@
 # frozen_string_literal: true
 
 class Ticket
-  def initialize(command)
+  def initialize(command, printer = TextTicketPrinter.new(self))
     @command = command
+    @printer = printer
   end
 
-  def afficher
-    lines = []
-    @command.command_items.each do |command_item|
-      lines << "#{command_item.quantity} #{command_item.product.name}: #{format('%.2f', command_item.total_ttc)}"
+  def print
+    @printer.print_ticket
+  end
+
+  def products_summaries
+    @products_summaries ||= @command.command_items.map do |command_item|
+      {
+        name: command_item.product.name,
+        total_ttc: command_item.total_ttc,
+        quantity: command_item.quantity
+      }
     end
+  end
 
-    lines << "Sales Taxes: #{format('%.2f', @command.taxes)}"
-    lines << "Total: #{format('%.2f', @command.total_ttc)}"
+  def total_ttc
+    @command.total_ttc
+  end
 
-    lines.join("\n")
+  def total_taxes
+    @command.total_taxes
   end
 end

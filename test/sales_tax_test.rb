@@ -12,7 +12,7 @@ class SalesTaxTest < Minitest::Test
     ticket = Ticket.new(commande)
 
     # Then
-    refute_nil ticket.afficher
+    refute_nil ticket.print
   end
 
   def test_basic_tax_with_one_product_without_tax_calcul
@@ -24,8 +24,8 @@ class SalesTaxTest < Minitest::Test
     ticket = Ticket.new(commande)
 
     # Then
-    refute_nil ticket.afficher
-    assert_equal "2 book: 24.98\nSales Taxes: 0.00\nTotal: 24.98", ticket.afficher
+    refute_nil ticket.print
+    assert_equal "2 book: 24.98\nSales Taxes: 0.00\nTotal: 24.98", ticket.print
   end
 
   def test_basic_tax_with_one_product_with_tax_calcul
@@ -37,8 +37,8 @@ class SalesTaxTest < Minitest::Test
     ticket = Ticket.new(commande)
 
     # Then
-    refute_nil ticket.afficher
-    assert_equal "1 music CD: 16.49\nSales Taxes: 1.50\nTotal: 16.49", ticket.afficher
+    refute_nil ticket.print
+    assert_equal "1 music CD: 16.49\nSales Taxes: 1.50\nTotal: 16.49", ticket.print
   end
 
   def test_basic_with_products_with_tax_and_without_tax_calcul
@@ -62,8 +62,8 @@ class SalesTaxTest < Minitest::Test
     ticket = Ticket.new(commande)
 
     # Then
-    refute_nil ticket.afficher
-    assert_equal expected_ticket.join("\n"), ticket.afficher
+    refute_nil ticket.print
+    assert_equal expected_ticket.join("\n"), ticket.print
   end
 
   def test_imported_tax_with_one_product_without_tax_calcul
@@ -78,8 +78,8 @@ class SalesTaxTest < Minitest::Test
     ticket = Ticket.new(commande)
 
     # Then
-    refute_nil ticket.afficher
-    assert_equal "1 imported box of chocolates: 10.50\nSales Taxes: 0.50\nTotal: 10.50", ticket.afficher
+    refute_nil ticket.print
+    assert_equal "1 imported box of chocolates: 10.50\nSales Taxes: 0.50\nTotal: 10.50", ticket.print
   end
 
   def test_imported_tax_with_one_product_with_tax_calcul
@@ -103,8 +103,8 @@ class SalesTaxTest < Minitest::Test
     ticket = Ticket.new(commande)
 
     # Then
-    refute_nil ticket.afficher
-    assert_equal expected_ticket.join("\n"), ticket.afficher
+    refute_nil ticket.print
+    assert_equal expected_ticket.join("\n"), ticket.print
   end
 
   def test_imported_tax_with_products_without_tax_and_with_tax_calcul
@@ -138,7 +138,7 @@ class SalesTaxTest < Minitest::Test
     ticket = Ticket.new(commande)
 
     # Then
-    refute_nil ticket.afficher
-    assert_equal expected_ticket.join("\n"), ticket.afficher
+    refute_nil ticket.print
+    assert_equal expected_ticket.join("\n"), ticket.print
   end
 end

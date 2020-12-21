@@ -15,10 +15,10 @@ class Product
   end
 
   def basic_tax
-    ((@type.tax_percentage * @price) * 20).round / 20.0
+    RoundUtil.round_nearest_to_005(@type.tax_percentage * @price)
   end
 
   def import_tax
-    ((@import_type.tax_percentage * @price) * 20).round / 20.0
+    RoundUtil.round_nearest_to_005(@import_type.tax_percentage * @price)
   end
 end
